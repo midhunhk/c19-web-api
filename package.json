@@ -1,0 +1,28 @@
+{
+  "name": "c19-india-web",
+  "version": "1.0.0",
+  "description": "Web API for Covid-19 India Counter",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "covid",
+    "coronavirus",
+    "india"
+  ],
+  "author": "midhunhk",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "engines": {
+    "node": "10.x"
+  }
+}
