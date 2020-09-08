@@ -7,7 +7,7 @@ const express = require('express');
 const app     = express();
 
 const PORT = process.env.PORT || '3000'
-const VERSION = "0.3.0"
+const VERSION = "0.3.1"
 
 app.get('/marco', (req, res) => res.send("polo") )
 
