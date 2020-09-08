@@ -9,7 +9,7 @@ const app     = express();
 const PORT = process.env.PORT || '3000'
 const VERSION = "0.3.0"
 
-app.get('/', (req, res) => res.send("Hello Universe!") )
+app.get('/marco', (req, res) => res.send("polo") )
 
 app.get('/summary/country/:countryCode', (req, res) => {
     service.getSummaryByCountry(req.params.countryCode)
@@ -26,7 +26,7 @@ app.get('/summary/country/:countryCode', (req, res) => {
 app.get('/summary/state/:stateCode', (req, res) => {
     service.getSummaryByState(req.params.stateCode)
         .then( result => {
-            //console.log(result)
+            // console.log(result)
             res.status(200).send(result)
         })
         .catch( err => {
@@ -40,9 +40,9 @@ app.get('/about', (req, res) => {
         .send(` C19 Web API <br/>Version ${VERSION} <br/>Source: https://api.covid19api.com/ Free API <br/> The free API is rate limited`)
 })
 
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200)
-        .send("/summary/country/:countryCode <br/>/summary/state/:stateCode <br/>/about <br/>/api")
+        .send("/summary/country/:countryCode <br/>/summary/state/:stateCode <br/>/about <br/>/marco")
 })
 
 app.listen(PORT, () => console.log(`Running on port ${PORT}`) )

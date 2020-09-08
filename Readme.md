@@ -1,6 +1,9 @@
 # C19 Web API
 A basic web api to get C19 status.  
-The data is sourced from https://api.covid19api.com/ with the rate limited free tier.
+The data is sourced from the below sources.
+
+https://api.covid19api.com/  
+https://www.covid19india.org/  
 
 ## Development mode
 npm run dev
@@ -9,4 +12,4 @@ npm run dev
 /summary/country/:countryCode  
 /summary/state/:stateCode  
 /about  
-/api  
+/marco  
