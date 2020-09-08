@@ -7,7 +7,7 @@ const express = require('express');
 const app     = express();
 
 const PORT = process.env.PORT || '3000'
-const VERSION = "0.3.1"
+const VERSION = process.env.npm_package_version //"0.3.1"
 
 app.get('/marco', (req, res) => res.send("polo") )
 
@@ -37,7 +37,7 @@ app.get('/summary/state/:stateCode', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.status(200)
-        .send(` C19 Web API <br/>Version ${VERSION} <br/>Source: https://api.covid19api.com/ Free API <br/> The free API is rate limited`)
+        .send(` <b>C19 Web API</b> <br/>Version ${VERSION} <br/>Source: https://api.covid19api.com/ Free API <br/> The free API is rate limited`)
 })
 
 app.get('/', (req, res) => {
