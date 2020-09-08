@@ -32,7 +32,7 @@ function filterByCountryCode(data, countryCode) {
     const filtered = countriesData.filter( item => {
         return item.CountryCode === codeToMatch
     })
-    console.log(filtered)
+    // console.log(filtered)
     return {
         countryName: filtered[0].Country,
         countryCode : codeToMatch,
