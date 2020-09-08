@@ -34,9 +34,9 @@ function getSummaryByState(stateCode) {
                             const stateDelta = getStateDelta(response.data, stateCode)
 
                             filteredByStateCode.deltaAvailable = true
-                            filteredByStateCode.confirmedToday = stateDelta.confirmed
-                            filteredByStateCode.deceasedToday = stateDelta.deceased
-                            filteredByStateCode.recoveredToday = stateDelta.recovered
+                            filteredByStateCode.confirmedToday = parseInt(stateDelta.confirmed)
+                            filteredByStateCode.deceasedToday = parseInt(stateDelta.deceased)
+                            filteredByStateCode.recoveredToday = parseInt(stateDelta.recovered)
                             // This response does not contain test count
                             filteredByStateCode.testedToday = 0
 
