@@ -24,8 +24,8 @@ function getSummaryByState(stateCode) {
         servicePromise
             .then( response => {
                 const filteredByStateCode = filterByStateCode(response.data, stateCode)
-
-                if(!filterByCountryCode.deltaAvailable) {
+                console.log("deltaAvailable " + filteredByStateCode.deltaAvailable)
+                if(filterByCountryCode.deltaAvailable === false) {
                     console.log("State Delta not available, invoking states_daily.json")
                     const deltaPromise = axios.get(STATES_DATA_2_URL)
                     deltaPromise
@@ -79,7 +79,7 @@ function filterByStateCode(data, stateCode){
     const dataIndex = stateCode.toUpperCase()
     const statesData = data[dataIndex]
 
-    // console.log(statesData)
+    console.log(statesData.delta)
     // Extract the required data at a single level
     const result = { 
         stateCode: dataIndex,
