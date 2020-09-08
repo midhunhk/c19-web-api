@@ -1,3 +1,6 @@
+/**
+ * The service layer that connects with the backend webservice
+ */
 const axios = require('axios')
 
 const SUMMARY_API_URL = 'https://api.covid19api.com/summary'

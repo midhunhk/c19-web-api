@@ -1,5 +1,5 @@
 /**
- * 
+ * Entry point and the express server for the c19 web api
  */
 
 const service = require('./service')
@@ -7,14 +7,14 @@ const express = require('express');
 const app     = express();
 
 const PORT = process.env.PORT || '3000'
-const VERSION = "0.2.0"
+const VERSION = "0.3.0"
 
 app.get('/', (req, res) => res.send("Hello Universe!") )
 
 app.get('/summary/country/:countryCode', (req, res) => {
     service.getSummaryByCountry(req.params.countryCode)
         .then( result => {
-            console.log(result)
+            // console.log(result)
             res.status(200).send(result)
         })
         .catch( err => {
@@ -26,7 +26,7 @@ app.get('/summary/country/:countryCode', (req, res) => {
 app.get('/summary/state/:stateCode', (req, res) => {
     service.getSummaryByState(req.params.stateCode)
         .then( result => {
-            console.log(result)
+            //console.log(result)
             res.status(200).send(result)
         })
         .catch( err => {
