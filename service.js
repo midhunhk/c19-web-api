@@ -64,7 +64,7 @@ function filterByCountryCode(data, countryCode) {
     return {
         countryName: filtered[0].Country,
         countryCode : codeToMatch,
-        updatedAt: filtered[0].Date,
+        updatedAt: new Date(filtered[0].Date).toISOString(),
         confirmedToday: filtered[0].NewConfirmed,
         deceasedToday: filtered[0].NewDeaths,
         recoveredToday: filtered[0].NewRecovered,
@@ -83,7 +83,7 @@ function filterByStateCode(data, stateCode){
     // Extract the required data at a single level
     const result = { 
         stateCode: dataIndex,
-        updatedAt: statesData.meta.last_updated,
+        updatedAt: new Date(statesData.meta.last_updated).toISOString(),
         population: statesData.meta.population,
         deltaAvailable: false,
         confirmedTotal: statesData.total.confirmed,
