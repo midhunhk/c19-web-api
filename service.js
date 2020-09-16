@@ -57,9 +57,7 @@ function filterByCountryCode(data, countryCode) {
     // Find the Countries node
     const countriesData = data.Countries
     // Filter by countryCode
-    const filtered = countriesData.filter( item => {
-        return item.CountryCode === codeToMatch
-    })
+    const filtered = countriesData.filter( item => item.CountryCode === codeToMatch )
     // console.log(filtered)
     return {
         countryName: filtered[0].Country,
