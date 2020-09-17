@@ -13,3 +13,6 @@ npm run dev
 /summary/state/:stateCode  
 /about  
 /marco  
+
+## Notes
+Since the API's are rate limited, the service responses for the summary endpoints are cached to prevent overrunning the rate
