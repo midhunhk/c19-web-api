@@ -4,14 +4,15 @@
 
 const service = require('./service')
 const express = require('express');
-const app     = express();
 const cache = require('memory-cache')
+const app     = express();
 
 const PORT = process.env.PORT || '3000'
 const VERSION = process.env.npm_package_version
-const CACHE_DURATION = 60 * 1 // in seconds
+// cache duration in seconds, read from Config vars via environment var or default
+const CACHE_DURATION = process.env.CACHE_DURATION || (60 * 1) 
 
-// Add cache middleware
+// Create the cache middleware
 let memCache = new cache.Cache()
 let cacheMiddleware = (duration) => {
     return (req, res, next) => {
