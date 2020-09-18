@@ -1,3 +1,6 @@
+0.4.1 [Sep 2020]
+- read CACHE_DURATION from environment
+
 0.4.0 [Sep 2020]
 - add cache to prevent running out of API
 
