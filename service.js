@@ -24,13 +24,15 @@ function getSummaryByState(stateCode) {
         servicePromise
             .then( response => {
                 const filteredByStateCode = filterByStateCode(response.data, stateCode)
-                console.log("deltaAvailable " + filteredByStateCode.deltaAvailable)
-                if(filterByCountryCode.deltaAvailable === false) {
-                    console.log("State Delta not available, invoking states_daily.json")
+                // console.log("deltaAvailable [" + filteredByStateCode.deltaAvailable + "]")
+                
+                if(filteredByStateCode.deltaAvailable === false) {
+                    console.log("State Delta not available, invoking states data 2")
                     const deltaPromise = axios.get(STATES_DATA_2_URL)
                     deltaPromise
                         .then( response =>{
                             // Parse the response to find the latest delta with this stateCode
+                            console.log("parse stateDelta response")
                             const stateDelta = getStateDelta(response.data, stateCode)
 
                             filteredByStateCode.deltaAvailable = true
@@ -77,13 +79,16 @@ function filterByStateCode(data, stateCode){
     const dataIndex = stateCode.toUpperCase()
     const statesData = data[dataIndex]
 
-    console.log(statesData.delta)
+    console.log("delta: " + statesData.delta)
     // Extract the required data at a single level
-    const result = { 
+    const result = {
         stateCode: dataIndex,
         updatedAt: new Date(statesData.meta.last_updated).toISOString(),
         population: statesData.meta.population,
         deltaAvailable: false,
+        confirmedToday: 0,
+        deceasedToday: 0,
+        recoveredToday: 0,
         confirmedTotal: statesData.total.confirmed,
         deceasedTotal: statesData.total.deceased,
         recoveredTotal: statesData.total.recovered,
@@ -97,7 +102,7 @@ function filterByStateCode(data, stateCode){
         result.recoveredToday = statesData.delta.recovered
         result.testedToday = statesData.delta.tested
     }
-
+    
     return result
 }
 

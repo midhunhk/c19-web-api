@@ -1,3 +1,6 @@
+0.4.2 [Sep 2020]
+- fix an error when reading states delta?
+
 0.4.1 [Sep 2020]
 - read CACHE_DURATION from environment
 
