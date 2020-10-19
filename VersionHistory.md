@@ -1,3 +1,6 @@
+0.4.3 [Oct 2020]
+- attemp to write unit tests
+
 0.4.2 [Sep 2020]
 - fix an error when reading states delta?
 

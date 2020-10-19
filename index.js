@@ -5,7 +5,7 @@
 const service = require('./service')
 const express = require('express');
 const cache = require('memory-cache')
-const app     = express();
+const app = express();
 
 const PORT = process.env.PORT || '3000'
 const VERSION = process.env.npm_package_version
@@ -33,7 +33,7 @@ let cacheMiddleware = (duration) => {
 }
 
 // App Routes
-app.get('/marco', (req, res) => res.send("polo") )
+app.get('/marco', (req, res) => res.status(200).send("polo") )
 
 app.get('/summary/country/:countryCode', cacheMiddleware(CACHE_DURATION), (req, res) => {
     service.getSummaryByCountry(req.params.countryCode)
