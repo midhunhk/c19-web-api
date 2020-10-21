@@ -3,6 +3,8 @@
  */
 
 const service = require('./service')
+const simpleLogger = require('./simple-logger')
+
 const express = require('express');
 const cache = require('memory-cache')
 const app = express();
@@ -12,6 +14,9 @@ const VERSION = process.env.npm_package_version
 // cache duration in seconds, read from Config vars via environment var or default
 const CACHE_DURATION = process.env.CACHE_DURATION || (60 * 1) 
 
+// Use a simple logger middleware
+app.use(simpleLogger)
+
 // Create the cache middleware
 let memCache = new cache.Cache()
 let cacheMiddleware = (duration) => {
@@ -19,12 +24,13 @@ let cacheMiddleware = (duration) => {
         let key =  '__express__' + req.originalUrl || req.url
         let cacheContent = memCache.get(key);
         if(cacheContent) {
-            res.send( cacheContent );
+            console.log('cache hit')
+            res.send( cacheContent )
             return
         } else {
             res.sendResponse = res.send
             res.send = (body) => {
-                memCache.put(key, body, duration*1000);
+                memCache.put(key, body, duration*1000)
                 res.sendResponse(body)
             }
             next()

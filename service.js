@@ -32,7 +32,7 @@ function getSummaryByState(stateCode) {
                     deltaPromise
                         .then( response =>{
                             // Parse the response to find the latest delta with this stateCode
-                            console.log("parse stateDelta response")
+                            //console.log("parse stateDelta response")
                             const stateDelta = getStateDelta(response.data, stateCode)
 
                             filteredByStateCode.deltaAvailable = true
@@ -79,7 +79,10 @@ function filterByStateCode(data, stateCode){
     const dataIndex = stateCode.toUpperCase()
     const statesData = data[dataIndex]
 
-    console.log("delta: " + statesData.delta)
+    if(!statesData){
+        throw Error("States Data is empty")
+    }
+    //console.log("delta: " + statesData.delta)
     // Extract the required data at a single level
     const result = {
         stateCode: dataIndex,

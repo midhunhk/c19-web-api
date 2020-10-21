@@ -1,6 +1,6 @@
 {
   "name": "c19-india-web",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Web API for Covid-19 India Counter",
   "main": "index.js",
   "scripts": {
